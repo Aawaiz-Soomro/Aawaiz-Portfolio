@@ -54,6 +54,31 @@ export const PROJECTS: Project[] = [
       "media/blip-auv/blip_10.jpg",]
   },
   {
+    slug: "turtlebot3-ros2",
+    title: "ROS2 Perception Experiments with TurtleBot3",
+    blurb: "Exploring perception and control capabilities using ROS2 on the TurtleBot3 platform with techniques like CV and Machine Learning.",
+    tags: ["Robotics", "ROS2", "Perception", "SLAM", "Navigation"],
+    area: "Robotics",
+    status: "Active",
+    thumb: "media/turtlebot3/turtlebot3_thumb.jpg",
+    previewVideo: "media/turtlebot3/turtlebot3_preview.mp4",
+    links: { code: "https://github.com/ojas-mediratta/turtlebot3-ros2" },
+    body: `The **ROS2 Perception Experiments with TurtleBot3** project is my ongoing exploration of perception and control using the TurtleBot3 platform. The focus is on learning the fundamentals of ROS2, experimenting with computer vision pipelines, and eventually integrating perception with navigation and control.
+
+      So far, I’ve:
+      - Set up the ROS2 environment and gained familiarity with its core concepts (nodes, topics, services, parameters).
+      - Implemented basic teleoperation control of the TurtleBot3 for hands-on interaction and debugging.
+      - Developed an OpenCV script for object detection, which is currently running on a laptop and will be ported to the TurtleBot for onboard perception.
+
+      As the course progresses, this project will expand to include:
+      - Integration of computer vision pipelines directly onto the robot.
+      - Experiments with SLAM and autonomous navigation.
+      - Applications of machine learning to improve perception and decision-making.
+
+      This is very much a **work in progress** — videos, photos, and technical write-ups will be added as I push further into SLAM, navigation, and perception challenges on the TurtleBot3.`,
+    gallery: []
+  },
+  {
     slug: "buzzcaster-guitar",
     title: "BuzzCaster: Gig-Ready, Teensy-Powered Guitar Effects",
     blurb: "Electric guitar with a built-in Teensy 4.1 effects chain, onboard DSP, LCD UI, simple controls, and custom body mods.",

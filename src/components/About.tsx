@@ -14,6 +14,7 @@ const STATUS_MESSAGES = [
   "portfolio UI polish.",
   "conference papers.",
   "learning ROS2.",
+  "HackGT '25.",
 ];
 
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`;
