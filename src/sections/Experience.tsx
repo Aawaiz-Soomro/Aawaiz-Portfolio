@@ -14,7 +14,14 @@ export default function Experience() {
               <h3 className="text-lg font-medium">{exp.role}</h3>
               <p className="text-sm text-accent-green">{exp.org}</p>
               <p className="text-xs text-subtext">{exp.date}</p>
-              <p className="mt-2 text-sm text-subtext leading-relaxed whitespace-pre-line">{exp.desc}</p>
+              
+              {exp.details?.length ? (
+                <ul className="mt-3 list-disc list-outside pl-5 text-sm text-subtext space-y-1">
+                  {exp.details.map((detail, idx) => (
+                    <li key={idx} className="leading-relaxed pl-1">{detail}</li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           ))}
         </div>
