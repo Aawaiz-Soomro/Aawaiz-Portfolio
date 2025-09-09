@@ -1,19 +1,22 @@
 import React, { useMemo, useState } from "react";
 import Container from "@/components/Container";
 import Brandmark from "@/components/Brandmark";
+import { useScrollSpy } from "@/components/useScrollSpy";
 import { Menu, X, Github, Linkedin, Instagram } from "lucide-react";
 
-const hoverAccents = [
-  "hover:border-accent-cyan hover:text-accent-cyan",
-  "hover:border-accent-purple hover:text-accent-purple",
-  "hover:border-accent-green hover:text-accent-green",
-  "hover:border-accent-yellow hover:text-accent-yellow",
-  "hover:border-accent-orange hover:text-accent-orange",
-  "hover:border-accent-blue hover:text-accent-blue",
+// Color mapping for buttons
+const buttonColors = [
+  { border: "#95e6cb", text: "#95e6cb" }, // cyan
+  { border: "#d4bfff", text: "#d4bfff" }, // purple  
+  { border: "#bae67e", text: "#bae67e" }, // green
+  { border: "#ffcc66", text: "#ffcc66" }, // yellow
+  { border: "#f28779", text: "#f28779" }, // orange
+  { border: "#59c2ff", text: "#59c2ff" }, // blue
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const nav = useMemo(
     () => [
@@ -27,10 +30,19 @@ export default function Navbar() {
     []
   );
 
-  const navWithAccents = nav.map((item, idx) => ({
-    ...item,
-    hoverClass: hoverAccents[idx % hoverAccents.length],
-  }));
+  // Extract section IDs for scrollspy
+  const sectionIds = nav.map(item => item.href.replace('#', ''));
+  const activeSection = useScrollSpy(sectionIds, 200);
+
+  const navWithAccents = nav.map((item, idx) => {
+    const colorIndex = idx % buttonColors.length;
+    return {
+      ...item,
+      colorIndex,
+      isActive: activeSection === item.href.replace('#', '') && !hoveredItem,
+      isHovered: hoveredItem === item.href,
+    };
+  });
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-[rgba(31,36,48,0.6)] backdrop-blur">
@@ -47,16 +59,29 @@ export default function Navbar() {
           </a>
 
           {/* Center: Nav */}
-          <nav className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-4 md:flex">
-            {navWithAccents.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                className={`rounded-xl border border-border px-3 py-1.5 text-sm text-subtext transition-colors ${n.hoverClass}`}
-              >
-                {n.label}
-              </a>
-            ))}
+          <nav 
+            className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-4 md:flex"
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            {navWithAccents.map((n) => {
+              const isHighlighted = n.isHovered || n.isActive;
+              const colors = buttonColors[n.colorIndex];
+              
+              return (
+                <a
+                  key={n.href}
+                  href={n.href}
+                  onMouseEnter={() => setHoveredItem(n.href)}
+                  className="rounded-xl border px-3 py-1.5 text-sm transition-all duration-300 ease-out"
+                  style={{
+                    borderColor: isHighlighted ? colors.border : '#2b3240',
+                    color: isHighlighted ? colors.text : '#9da5b4'
+                  }}
+                >
+                  {n.label}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Right: Social links */}
@@ -99,17 +124,30 @@ export default function Navbar() {
 
         {/* Mobile nav */}
         {open && (
-          <div className="grid gap-2 pb-4 md:hidden">
-            {navWithAccents.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                onClick={() => setOpen(false)}
-                className={`rounded-xl border border-border bg-panel px-3 py-2 text-subtext transition-colors ${n.hoverClass}`}
-              >
-                {n.label}
-              </a>
-            ))}
+          <div 
+            className="grid gap-2 pb-4 md:hidden"
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            {navWithAccents.map((n) => {
+              const isHighlighted = n.isHovered || n.isActive;
+              const colors = buttonColors[n.colorIndex];
+              
+              return (
+                <a
+                  key={n.href}
+                  href={n.href}
+                  onClick={() => setOpen(false)}
+                  onMouseEnter={() => setHoveredItem(n.href)}
+                  className="rounded-xl border bg-panel px-3 py-2 transition-all duration-500 ease-out"
+                  style={{
+                    borderColor: isHighlighted ? colors.border : '#2b3240',
+                    color: isHighlighted ? colors.text : '#9da5b4'
+                  }}
+                >
+                  {n.label}
+                </a>
+              );
+            })}
           </div>
         )}
       </Container>
