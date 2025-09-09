@@ -12,6 +12,9 @@ interface AssetLoadingState {
   totalAssets: number;
 }
 
+// Key for sessionStorage to track if assets have been loaded
+const ASSETS_LOADED_KEY = 'portfolio_assets_loaded';
+
 export function useAssetPreloader(): AssetLoadingState {
   const [loadingState, setLoadingState] = useState<AssetLoadingState>({
     isLoading: true,
@@ -21,6 +24,20 @@ export function useAssetPreloader(): AssetLoadingState {
   });
 
   useEffect(() => {
+    // Check if assets were already loaded in this session
+    const assetsAlreadyLoaded = sessionStorage.getItem(ASSETS_LOADED_KEY) === 'true';
+    
+    if (assetsAlreadyLoaded) {
+      // Skip loading screen for subsequent navigations
+      setLoadingState({
+        isLoading: false,
+        progress: 100,
+        loadedAssets: 0,
+        totalAssets: 0,
+      });
+      return;
+    }
+
     // Collect all critical assets to preload
     const criticalAssets: string[] = [];
     
@@ -93,6 +110,9 @@ export function useAssetPreloader(): AssetLoadingState {
     // Load all critical assets
     Promise.all(criticalAssets.map(asset => loadAsset(asset)))
       .then(() => {
+        // Mark assets as loaded for this session
+        sessionStorage.setItem(ASSETS_LOADED_KEY, 'true');
+        
         // Add a small delay to ensure smooth transition
         setTimeout(() => {
           setLoadingState(prev => ({
@@ -105,6 +125,7 @@ export function useAssetPreloader(): AssetLoadingState {
       .catch((error) => {
         console.warn('Some assets failed to load:', error);
         // Still proceed even if some assets fail
+        sessionStorage.setItem(ASSETS_LOADED_KEY, 'true');
         setTimeout(() => {
           setLoadingState(prev => ({
             ...prev,

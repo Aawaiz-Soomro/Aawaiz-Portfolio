@@ -13,6 +13,11 @@ export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
   const project = useMemo(() => PROJECTS.find(p => p.slug === slug), [slug]);
 
+  // Scroll to top when component mounts or slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   useEffect(() => {
     const onMove = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
