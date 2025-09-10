@@ -26,7 +26,7 @@ export default function Education() {
             return (
               <div
                 key={idx}
-                className="group rounded-xl border border-border bg-panel p-5 transition-colors hover:border-accent-yellow"
+                className="group rounded-xl border border-border bg-panel p-5 transition-all hover:border-accent-yellow hover:-translate-y-1"
               >
                 <div className="flex items-center gap-4">
                   {/* Left: logo — left-justified, vertically centered */}
@@ -50,11 +50,16 @@ export default function Education() {
                     <p className="text-xs text-subtext">{edu.date}</p>
 
                     {edu.details?.length ? (
-                      <ul className="mt-3 list-disc list-outside pl-5 text-sm text-subtext space-y-1">
+                      <div className="mt-3 text-sm text-subtext space-y-1">
                         {edu.details.map((d, i) => (
-                          <li key={i} className="leading-relaxed pl-1">{d}</li>
+                          <div key={i} className="leading-relaxed">
+                            {d.split(/(Concentration:|Coursework:|Activities and Societies:)/).map((part, idx) => 
+                              ['Concentration:', 'Coursework:', 'Activities and Societies:'].includes(part) ? 
+                                <span key={idx} className="font-semibold">{part}</span> : part
+                            )}
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     ) : null}
                   </div>
                 </div>

@@ -15,8 +15,8 @@ export const EDUCATION: Education[] = [
         date: "2025 – 2027",
         details: [
             "Concentration: Artificial Intelligence, Perception, and Controls",
-            "Coursework: Artificial Intelligence, Machine Learning, Computer Vision, Deep Learning, Deep Reinforcement Learning, Linear Control Systems, Nonlinear Control Systems",
             "Activities and Societies: Graduate Research, AI@GT, HackGT Hackathon, RoboGrads, Transfer2Tech Mentorship",
+            "Coursework: Artificial Intelligence, Machine Learning, Computer Vision, Deep Learning, Deep Reinforcement Learning, Linear Control Systems, Nonlinear Control Systems",
         ],
         logoKey: "gt",
         logoSize: 72,
@@ -27,8 +27,8 @@ export const EDUCATION: Education[] = [
         date: "2023 – 2025",
         details: [
             "Concentration: Distributed Systems & Software Design, and Cybersecurity",
-            "Coursework: Data Structures \& Algorithms, Digital System Design, Circuit Analysis,  Prototyping Intelligent Devices, Embedded Systems Design, Fundamentals of Machine Learning, Network Security, Cybersecurity",
             "Activities and Societies: Undergraduate Research, GT iOS Club, GT Mechanical Keyboards",
+            "Coursework: Data Structures \& Algorithms, Digital System Design, Circuit Analysis,  Prototyping Intelligent Devices, Embedded Systems Design, Fundamentals of Machine Learning, Network Security, Cybersecurity",
         ],
         logoKey: "gt",
         logoSize: 72,

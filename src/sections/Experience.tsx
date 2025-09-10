@@ -10,7 +10,7 @@ export default function Experience() {
         <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Experience</h2>
         <div className="mt-8 space-y-8">
           {EXPERIENCES.map((exp, i) => (
-            <div key={i} className="rounded-xl border border-border bg-panel p-5 hover:border-accent-green transition-colors">
+            <div key={i} className="rounded-xl border border-border bg-panel p-5 hover:border-accent-green transition-all hover:-translate-y-1">
               <h3 className="text-lg font-medium">{exp.role}</h3>
               <p className="text-sm text-accent-green">{exp.org}</p>
               <p className="text-xs text-subtext">{exp.date}</p>
