@@ -86,9 +86,9 @@ export default function ProjectDetail() {
 
             {/* Top-right links: Live / Code */}
             <div className="mb-3 flex items-center gap-4 md:absolute md:right-8 md:top-8 md:mt-0 ">
-              {project.links?.live && (
+              {project.links?.link && (
                 <a
-                  href={project.links.live}
+                  href={project.links.link}
                   target="_blank"
                   rel="noreferrer"
                   className="group inline-flex items-center gap-1 rounded-2xl border border-border px-4 py-2 text-sm font-medium text-text transition-colors text-accent-white hover:text-accent-purple hover:border-accent-purple"
