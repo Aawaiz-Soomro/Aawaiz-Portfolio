@@ -74,34 +74,6 @@ export const PROJECTS: Project[] = [
       "media/turtlebot3/turtlebot3_1.mp4",
       "media/turtlebot3/turtlebot3_2.mp4",]
   },
-  // {
-  //   slug: "hackGT12",
-  //   title: "Dose: Modern care in a bottle [HackGT 12 Best Overall Winner]",
-  //   blurb: "A smart pill bottle that uses embedded sensing and rich data delivery to ensure safe, consistent medication adherence.",
-  //   tags: ["Embedded Systems", "C++", "ESP32", "Rapid Prototyping", "MedTech"],
-  //   area: "Embedded",
-  //   status: "Complete",
-  //   thumb: "media/hackGT12/dose_thumb.jpg",
-  //   previewVideo: "media/hackGT12/dose_preview.mp4",
-  //   youtubeVideo: "https://www.youtube.com/watch?v=t18fCTw4IXo",
-  //   links: { code: "https://github.com/dawsonp2003/HackGT12-Dose", link: "https://devpost.com/software/dose-ebmo9z" },
-  //   body: `Dose was my HackGT12 Hackathon project. This was my first ever hackathon, and I loved it. Over the course of a weekend, my team and I set out to tackle a problem that’s huge but often invisible: medication non-adherence.
-
-  //   Medication non-adherence happens when patients don’t take their medication at the prescribed time or in the prescribed way. It might sound simple, but the impact is massive—studies estimate it costs the U.S. healthcare system $100–300 billion every year in avoidable direct costs. Missed doses, overdoses, and inconsistent adherence don’t just create complications for patients, but also ripple outward into failed treatments, unnecessary hospitalizations, and unreliable results in drug trial research.
-
-  //   That’s where Dose comes in. We designed it as a smart pill bottle that combines embedded sensing with rich data delivery. For patients, it makes adherence straightforward. For researchers and clinicians, it provides the high-quality data needed to truly understand whether treatments are working as intended. `,
-  //   gallery: [
-  //     "media/hackGT12/dose_1.jpeg",
-  //     "media/hackGT12/dose_2.jpeg",
-  //     "media/hackGT12/dose_3.jpeg", 
-  //     "media/hackGT12/dose_4.jpeg",
-  //     "media/hackGT12/dose_5.jpeg",
-  //     "media/hackGT12/dose_6.jpeg",
-  //     "media/hackGT12/dose_7.jpeg",
-  //     "media/hackGT12/dose_8.jpeg",
-  //     "media/hackGT12/dose_9.jpeg",
-  //   ]
-  // },
   {
     slug: "buzzcaster-guitar",
     title: "BuzzCaster: Gig-Ready, Teensy-Powered Guitar Effects",
@@ -133,6 +105,41 @@ export const PROJECTS: Project[] = [
       "media/buzzcaster/buzzcaster_9.jpg",
       "media/buzzcaster/buzzcaster_10.jpg",
       "media/buzzcaster/buzzcaster_11.jpg",]
+  },
+    {
+    slug: "hackGT12",
+    title: "Dose: Modern care in a bottle [HackGT 12 Best Overall Winner]",
+    blurb: "A smart pill bottle that uses embedded sensing and rich data delivery to ensure safe, consistent medication adherence.",
+    tags: ["Embedded Systems", "C++", "ESP32", "Rapid Prototyping", "MedTech"],
+    area: "Embedded",
+    status: "Complete",
+    thumb: "media/hackGT12/dose_thumb2.jpeg",
+    previewVideo: "media/hackGT12/dose_preview.mp4",
+    youtubeVideo: "https://www.youtube.com/watch?v=t18fCTw4IXo",
+    links: { code: "https://github.com/dawsonp2003/HackGT12-Dose", link: "https://devpost.com/software/dose-ebmo9z" },
+    body: `Dose was my HackGT12 Hackathon project. This was my first ever hackathon, and I loved it. Over the course of 36 intense hours, my team and I brainstormed, built, and debugged our way through sleepless nights, sticky notes, and too many energy drinks to count. HackGT12 brought together 900+ participants, and being part of that energy—watching the room buzz with ideas while racing the clock to bring ours to life—was unforgettable.  
+
+We set out to tackle a problem that’s huge but often invisible: medication non-adherence.  
+
+Medication non-adherence happens when patients don’t take their medication at the prescribed time or in the prescribed way. It might sound simple, but the impact is massive—studies estimate it costs the U.S. healthcare system $100–300 billion every year in avoidable direct costs. Missed doses, overdoses, and inconsistent adherence don’t just create complications for patients, but also ripple outward into failed treatments, unnecessary hospitalizations, and unreliable results in drug trial research.  
+
+That’s where Dose comes in. We designed it as a smart pill bottle that combines embedded sensing with rich data delivery. For patients, it makes adherence straightforward. For researchers and clinicians, it provides the high-quality data needed to truly understand whether treatments are working as intended. Building the hardware, software, and dashboard in such a short time was equal parts challenging and exhilarating—but seeing our prototype come together at the expo made every late-night bug fix worth it.`,
+    gallery: [
+      "media/hackGT12/dose_1.jpeg",
+      "media/hackGT12/dose_2.jpeg",
+      "media/hackGT12/dose_3.jpeg", 
+      "media/hackGT12/dose_4.jpeg",
+      "media/hackGT12/dose_5.jpeg",
+      "media/hackGT12/dose_6.jpeg",
+      "media/hackGT12/dose_7.jpeg",
+      "media/hackGT12/dose_8.jpeg",
+      "media/hackGT12/dose_9.jpeg",
+      "media/hackGT12/dose_10.jpeg",
+      "media/hackGT12/dose_11.jpeg",
+      "media/hackGT12/dose_12.jpeg",
+      "media/hackGT12/dose_13.jpeg",
+      "media/hackGT12/dose_14.jpeg",
+    ]
   },
   {
     slug: "et55-keyboard",
