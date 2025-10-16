@@ -126,14 +126,13 @@ export default function Publications() {
                     </p>
                   )}
 
-                  {/* Outlet / venue line in accent orange */}
-                    {(p.outlet || p.date) && (
-                    <p className="mt-1 text-sm">
-                      <span className="text-subtext">{p.outlet}</span>
-                      {p.outlet && p.date ? " • " : ""}
-                      <span className="text-accent-orange">{p.date}</span>
-                    </p>
-                    )}
+                  {/* Outlet, Date, Type line */}
+                  <p className="mt-1 text-sm">
+                    {p.outlet && <span className="text-subtext">{p.outlet}</span>}
+                    {p.date && <><span className="text-subtext"> • </span><span className="text-accent-orange">{p.date}</span></>}
+                    <span className="text-subtext"> • </span>
+                    <span className="text-accent-orange capitalize">{p.type}</span>
+                  </p>
 
                   {/* Links: Paper / Code */}
                   {(p.href || p.code) && (

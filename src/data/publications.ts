@@ -1,4 +1,4 @@
-export type PubType = "paper" | "article" | "talk" | "poster" | "video" | "demo";
+export type PubType = "Paper" | "Article" | "Talk" | "Poster" | "Video" | "Demo" | "Award";
 
 export type Publication = {
   title: string;
@@ -20,8 +20,8 @@ export const PUBLICATIONS: Publication[] = [
   //   title: "Underwater Robotic Platform for Dolphin Vocalization Studies",
   //   outlet: "Tangible, Embedded and Embodied Interaction (TEI) Conference",
   //   date: "2026",
-  //   type: "paper",
-  //   authors: ["Riley Mehrman", "Ojas Mediratta", "Dawson Pent", "Charles D. Ramey"],
+  //   type: "Paper",
+  //   authors: ["Riley Mehrman", "Ojas Mediratta", "Dawson Pent", "Charles D. Ramey", "Thad Starner"],
   //   href: "https://example.com/project", // external paper link
   //   thumb: "media/blip-auv/blippub_thumb.png",
   //   previewVideo: "media/blip-auv/blippub_preview.mp4",
@@ -30,7 +30,7 @@ export const PUBLICATIONS: Publication[] = [
     title: "Best Overall Winners! HackGT 12 Hackathon Competition",
     outlet: "HackGT 12",
     date: "2026",
-    type: "demo",
+    type: "Award",
     authors: ["Ojas Mediratta", "Dawson Pent", "James Li", "David Serrao"],
     href: "https://devpost.com/software/dose-ebmo9z", // external link
     thumb: "media/hackGT12/dose_pub_thumb.jpeg",
