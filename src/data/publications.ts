@@ -1,4 +1,4 @@
-export type PubType = "Paper" | "Article" | "Talk" | "Poster" | "Video" | "Demo" | "Award";
+export type PubType = "Paper" | "Article" | "Talk" | "Poster" | "Video" | "Demo" | "Award" | "Other";
 
 export type Publication = {
   title: string;
@@ -25,6 +25,15 @@ export const PUBLICATIONS: Publication[] = [
   //   href: "https://example.com/project", // external paper link
   //   thumb: "media/blip-auv/blippub_thumb.png",
   //   previewVideo: "media/blip-auv/blippub_preview.mp4",
+  // },
+  // {
+  //   title: "1% Club Contestant",
+  //   outlet: "Amazon Prime Video TV Series",
+  //   date: "2026",
+  //   type: "Other",
+  //   href: "https://example.com/link", // external link
+  //   thumb: "thumbnail.png",
+  //   previewVideo: "preview.mp4",
   // },
   {
     title: "Best Overall Winners! HackGT 12 Hackathon Competition",

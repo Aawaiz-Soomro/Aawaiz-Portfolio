@@ -38,7 +38,7 @@ export const EXPERIENCES: Experience[] = [
     org: "Georgia Tech Office of Information Technology",
     date: "May 2024 – Jan 2025",
     details: [
-      "Responded to triaged security incidents and lead a team of 12 agents to proficiency for support to over 30 departments of Georgia Tech personnel via remote and on-site assistance",
+      "Responded to triaged security incidents and lead a team of 12 student assistants to proficiency for support to over 30 departments of Georgia Tech personnel via remote and on-site assistance",
       "Developed and deployed a PowerShell script for verifying device imaging and task sequences that reduced setup time for our team by 50% in most cases",
       "Migrated enterprise device management from the SCCM platform to Microsoft Endpoint/Intune, enabling more streamlined deployment of over 15 distinct user profiles with associated software and service access",
       "Designed and implemented an automated MS Teams notification tool using Power Automate that reduced missed remote service requests to zero over a 1 month timeline"

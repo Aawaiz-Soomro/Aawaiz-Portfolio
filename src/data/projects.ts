@@ -116,9 +116,9 @@ export const PROJECTS: Project[] = [
     tags: ["Embedded Systems", "C++", "ESP32", "Rapid Prototyping", "MedTech"],
     area: "Embedded",
     status: "Complete",
-    thumb: "media/hackGT12/dose_thumb2.jpeg",
+    thumb: "media/hackGT12/dose_thumb3.jpeg",
     previewVideo: "media/hackGT12/dose_preview.mp4",
-    youtubeVideo: "https://www.youtube.com/watch?v=O0lPuXRws9g",
+    youtubeVideo: "8https://youtu.be/j7cSnyq9Vn8?si=D-a5kVKJLNQyEynK",
     links: { code: "https://github.com/dawsonp2003/HackGT12-Dose", link: "https://devpost.com/software/dose-ebmo9z" },
     body: `Dose was my HackGT12 Hackathon project. This was my first ever hackathon, and I loved it. Over the course of 36 intense hours, my team and I brainstormed, built, and debugged our way through sleepless nights, sticky notes, and too many energy drinks to count. HackGT12 brought together 900+ participants, and being part of that energy—watching the room buzz with ideas while racing the clock to bring ours to life—was unforgettable.  
 
