@@ -18,17 +18,17 @@ export type Publication = {
 };
 
 export const PUBLICATIONS: Publication[] = [
-  {
-    title: "BLIP: An Underwater Robot for Facilitating Acoustic Interactions with Dolphins",
-    outlet: "Tangible, Embedded and Embodied Interaction (TEI) Conference",
-    date: "2026",
-    type: "Paper",
-    authors: ["Riley Mehrman", "Ojas Mediratta", "Charles D. Ramey", "Thad Starner"],
-    status: "Under Review",
-    // href: "https://example.com/project", 
-    thumb: "media/blip-auv/blippub_thumb.png",
-    previewVideo: "media/blip-auv/blippub_preview.mp4",
-  },
+  // {
+  //   title: "BLIP: An Underwater Robot for Facilitating Acoustic Interactions with Dolphins",
+  //   outlet: "Tangible, Embedded and Embodied Interaction (TEI) Conference",
+  //   date: "2026",
+  //   type: "Paper",
+  //   authors: ["Riley Mehrman", "Ojas Mediratta", "Charles D. Ramey", "Thad Starner"],
+  //   status: "Under Review",
+  //   // href: "https://example.com/project", 
+  //   thumb: "media/blip-auv/blippub_thumb.png",
+  //   previewVideo: "media/blip-auv/blippub_preview.mp4",
+  // },
   // {
   //   title: "1% Club Contestant",
   //   outlet: "Amazon Prime Video TV Series",
