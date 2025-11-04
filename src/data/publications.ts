@@ -30,13 +30,22 @@ export const PUBLICATIONS: Publication[] = [
   //   previewVideo: "media/blip-auv/blippub_preview.mp4",
   // },
   // {
-  //   title: "1% Club Contestant",
+  //   title: "Contestant on The 1% Club",
   //   outlet: "Amazon Prime Video TV Series",
   //   date: "2026",
   //   type: "Other",
   //   href: "https://example.com/link", // external link
   //   thumb: "thumbnail.png",
   //   previewVideo: "preview.mp4",
+  // },
+  // {
+  //   title: "First in Track Winner! AI ATL '25 Hackathon",
+  //   outlet: "AI ATL",
+  //   date: "2026",
+  //   type: "Award",
+  //   authors: ["Ojas Mediratta", "Fawaz Sabir"],
+  //   href: "https://devpost.com/software/project", // external link
+  //   thumb: "media/ai-atl25/winner_pub_thumb.jpeg",
   // },
   {
     title: "Best Overall Winners! HackGT 12 Hackathon Competition",
