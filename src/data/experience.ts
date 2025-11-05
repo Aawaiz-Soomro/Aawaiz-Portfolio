@@ -12,6 +12,15 @@ export const EXPERIENCES: Experience[] = [
   //   date: "May 2026 – Aug 2026",
   //   details: [ ]
   // },
+  // {
+  //   role: "Graduate Research Assistant",
+  //   org: "Laboratory for Intelligent Decision and Autonomous Robotics (LIDAR) @ Georgia Tech",
+  //   date: "Jan 2026 – Present",
+  //   details: [
+  //     "Conducting research on tactile sensing for humanoid loco-manipulation and RL for collaborative transport and whole-body manipulation",
+  //     "Integrated tactile sensors into a humanoid robot platform, enabling enhanced manipulation capabilities for complex tasks",
+  //   ]
+  // },
   {
     role: "Graduate Research Assistant",
     org: "Contextual Computing Group @ Georgia Tech",
