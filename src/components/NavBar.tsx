@@ -2,10 +2,11 @@ import React, { useMemo, useState } from "react";
 import Container from "@/components/Container";
 import Brandmark from "@/components/Brandmark";
 import { useScrollSpy } from "@/components/useScrollSpy";
-import { Menu, X, Github, Linkedin, Instagram } from "lucide-react";
+import { Menu, X, Github, Linkedin, Instagram, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
-// Color mapping for buttons
-const buttonColors = [
+// Color mapping for buttons - Dark theme (Ayu Mirage)
+const darkButtonColors = [
   { border: "#95e6cb", text: "#95e6cb" }, // cyan
   { border: "#d4bfff", text: "#d4bfff" }, // purple  
   { border: "#bae67e", text: "#bae67e" }, // green
@@ -14,9 +15,22 @@ const buttonColors = [
   { border: "#59c2ff", text: "#59c2ff" }, // blue
 ];
 
+// Color mapping for buttons - Light theme (Cloud)
+const lightButtonColors = [
+  { border: "#008abd", text: "#008abd" }, // cyan/blue
+  { border: "#7d57c2", text: "#7d57c2" }, // purple  
+  { border: "#678f03", text: "#678f03" }, // green
+  { border: "#cc6d00", text: "#cc6d00" }, // orange/yellow
+  { border: "#d0372d", text: "#d0372d" }, // red
+  { border: "#008abd", text: "#008abd" }, // blue
+];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const { theme, toggleTheme } = useTheme();
+  
+  const buttonColors = theme === 'dark' ? darkButtonColors : lightButtonColors;
 
   const nav = useMemo(
     () => [
@@ -45,7 +59,7 @@ export default function Navbar() {
   });
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-[rgba(31,36,48,0.6)] backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border backdrop-blur" style={{ backgroundColor: theme === 'dark' ? 'rgba(31,36,48,0.6)' : 'rgba(241,241,241,0.8)' }}>
       <Container>
         <div className="relative flex h-16 items-center justify-between">
           {/* Left: Name */}
@@ -74,8 +88,8 @@ export default function Navbar() {
                   onMouseEnter={() => setHoveredItem(n.href)}
                   className="rounded-xl border px-3 py-1.5 text-sm transition-all duration-300 ease-out"
                   style={{
-                    borderColor: isHighlighted ? colors.border : '#2b3240',
-                    color: isHighlighted ? colors.text : '#9da5b4'
+                    borderColor: isHighlighted ? colors.border : 'var(--color-border)',
+                    color: isHighlighted ? colors.text : 'var(--color-subtext)'
                   }}
                 >
                   {n.label}
@@ -84,8 +98,15 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right: Social links */}
+          {/* Right: Theme toggle + Social links */}
           <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="text-subtext hover:text-accent-yellow transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun className="size-5" /> : <Moon className="size-5" />}
+            </button>
             <a
               href="https://github.com/ojas-mediratta"
               target="_blank"
@@ -112,14 +133,23 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setOpen((o) => !o)}
-            className="rounded-xl border border-border p-2 md:hidden transition-colors hover:border-accent-purple"
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+          {/* Mobile: Theme toggle + menu button */}
+          <div className="flex md:hidden items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="rounded-xl border border-border p-2 text-subtext transition-colors hover:border-accent-yellow hover:text-accent-yellow"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun className="size-5" /> : <Moon className="size-5" />}
+            </button>
+            <button
+              onClick={() => setOpen((o) => !o)}
+              className="rounded-xl border border-border p-2 transition-colors hover:border-accent-purple"
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile nav */}
@@ -140,8 +170,8 @@ export default function Navbar() {
                   onMouseEnter={() => setHoveredItem(n.href)}
                   className="rounded-xl border bg-panel px-3 py-2 transition-all duration-500 ease-out"
                   style={{
-                    borderColor: isHighlighted ? colors.border : '#2b3240',
-                    color: isHighlighted ? colors.text : '#9da5b4'
+                    borderColor: isHighlighted ? colors.border : 'var(--color-border)',
+                    color: isHighlighted ? colors.text : 'var(--color-subtext)'
                   }}
                 >
                   {n.label}

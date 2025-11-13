@@ -146,8 +146,8 @@ export default function Projects() {
                   onMouseEnter={() => setHoveredFilter(filter.value)}
                   className="rounded-xl border px-3 py-1.5 text-sm transition-all duration-300 ease-out"
                   style={{
-                    borderColor: isHighlighted ? '#d4bfff' : '#2b3240',
-                    color: isHighlighted ? '#d4bfff' : '#9da5b4'
+                    borderColor: isHighlighted ? 'var(--color-accent-purple)' : 'var(--color-border)',
+                    color: isHighlighted ? 'var(--color-accent-purple)' : 'var(--color-subtext)'
                   }}
                 >
                   {filter.label}
