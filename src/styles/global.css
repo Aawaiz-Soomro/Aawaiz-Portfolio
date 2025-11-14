@@ -2,15 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Menlo + Ayu Mirage variables */
+/* Menlo + Ayu Mirage (Dark) / Atom One Light variables */
 :root {
   --font-sans: Menlo, monospace;
-
+  
+  /* Default to dark theme */
   --color-bg: #1f2430;
   --color-panel: #232a36;
   --color-border: #2b3240;
   --color-text: #cbccc6;
-  --color-subtext: #9da5b4;
+  --color-subtext: #828997;
 
   --color-accent-blue: #59c2ff;
   --color-accent-green: #bae67e;
@@ -18,6 +19,44 @@
   --color-accent-orange: #f28779;
   --color-accent-purple: #d4bfff;
   --color-accent-cyan: #95E6CB;
+  
+  --color-mouse-glow: rgba(89,194,255,0.15);
+}
+
+/* Dark Theme - Ayu Mirage */
+.dark {
+  --color-bg: #1f2430;
+  --color-panel: #232a36;
+  --color-border: #2b3240;
+  --color-text: #cbccc6;
+  --color-subtext: #828997;
+
+  --color-accent-blue: #59c2ff;
+  --color-accent-green: #bae67e;
+  --color-accent-yellow: #ffcc66;
+  --color-accent-orange: #f28779;
+  --color-accent-purple: #d4bfff;
+  --color-accent-cyan: #95E6CB;
+  
+  --color-mouse-glow: rgba(89,194,255,0.15);
+}
+
+/* Light Theme - Cloud */
+.light {
+  --color-bg: #f1f1f1;
+  --color-panel: #fafbfc;
+  --color-border: #9e9fa0;
+  --color-text: #454545;
+  --color-subtext: #5a5a5a;
+
+  --color-accent-blue: #008abd;
+  --color-accent-green: #678f03;
+  --color-accent-yellow: #cc6d00;
+  --color-accent-orange: #d0372d;
+  --color-accent-purple: #7d57c2;
+  --color-accent-cyan: #008abd;
+  
+  --color-mouse-glow: rgb(255, 255, 255, 1);
 }
 
 html, body, #root {
@@ -25,6 +64,7 @@ html, body, #root {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Base font size scaling for different screen sizes */
