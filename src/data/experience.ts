@@ -7,6 +7,12 @@ export type Experience = {
 
 export const EXPERIENCES: Experience[] = [
   // {
+  //   role: "Hardware Systems Intern",
+  //   org: "Physical Intelligence (π)",
+  //   date: "Jan 2026 – Apr 2026",
+  //   details: [ ]
+  // },
+  // {
   //   role: "Robotics Research Intern",
   //   org: "GE Vernova Advanced Research Center",
   //   date: "May 2026 – Aug 2026",
@@ -26,10 +32,11 @@ export const EXPERIENCES: Experience[] = [
     org: "Contextual Computing Group @ Georgia Tech",
     date: "Aug 2024 – Present",
     details: [
-      "Led field-robotics work with an aquarium and a nonprofit, running controlled pool trials and open-water deployments of a custom marine robot to advance real-time dolphin communication and enrichment research",
-      "Designed and built a bone-conduction headset for underwater use by researchers, enabling clear audio playback for real-time dolphin vocalization translation and two-way communication between researchers and dolphins",
-      "Packaged analysis pipelines and documentation so collaborators could reproduce results and generate new stimuli without engineer support during field and lab research sessions",
-      "Developed Python tools for autocorrelation, waveform reconstruction, and spectrogram analysis that turned raw recordings into testable audio stimulus libraries and reduced manual preprocessing",
+      "Built a remotely operated vehicle (ROV) for dolphin research and enrichment, contributing across firmware, electronics, and mechanical design; successfully deployed in 15+ pool trials and 4 open-water trials in the Atlantic",
+      "Designed and implemented an ESP32 firmware stack, orchestrating a cascaded PID-based controller, ESC-driven thrusters, internal sensors, over-the-air telemetry, and LED signaling, unifying system operation in the field",
+      "Engineered PCBs unifying microcontroller, power, and sensor interfaces, cutting wiring volume and failure points for reliability",
+      "Designed mechanical components in Fusion 360, iterating and fabricating rapidly for waterproofing and durability for field use",
+      "Designed and built a bone-conduction headset for underwater use by researchers, enabling clear audio playback for real-time dolphin vocalization translation and two-way communication",
       "Co-authored research papers documenting system design and field findings for submission to international conferences in animal-computer interaction and marine robotics"
     ]
   },
@@ -39,7 +46,7 @@ export const EXPERIENCES: Experience[] = [
     date: "May 2025 – Present",
     details: [
       "Served as a teaching assistant for Mobile and Ubiquitous Computing and Prototyping Intelligent Devices; graduate-level, project based courses on embedded systems, firmware development, and edge machine learning",
-      "Guided 6–8 student teams in developing mobile-based prototypes and custom microcontroller projects, providing mentorship on report authorship that contributed to higher project success rates and more polished deliverables",
+      "Guided 8 student teams in developing app prototypes and custom microcontroller projects, providing mentorship on report authorship that led to higher project success rates and more polished deliverables.",
       "Hosted office hours and asynchronous feedback sessions, guiding students through technical and research hurdles"
     ]
   },
