@@ -36,14 +36,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Add CNAME to artifact
-        run: echo "ojasmediratta.com" > dist/CNAME
-
       - name: Create SPA fallback for GitHub Pages
         run: cp dist/index.html dist/404.html
 
       - name: Inspect artifact
-        run: ls -la dist && echo "----- CNAME -----" && cat dist/CNAME
+        run: ls -la dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
