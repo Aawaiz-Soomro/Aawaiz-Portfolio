@@ -2,7 +2,7 @@ import React from "react";
 import Section from "@/components/Section";
 import Container from "@/components/Container";
 import { EDUCATION } from "@/data/education";
-import GTLogo from "@/assets/gt_logo.svg?react";
+import GTLogo from "@/assets/nu_logo.svg?react";
 
 // simple registry: add more schools by importing and mapping here
 const eduLogos = {
