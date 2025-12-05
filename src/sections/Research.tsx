@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import Section from "@/components/Section";
 import Container from "@/components/Container";
 import { RESEARCH } from "@/data/research";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Clock } from "lucide-react";
 
 /** Build a base-aware URL for files in /public */
 const withBase = (path?: string) =>
@@ -53,8 +53,13 @@ function MediaPreview({
           loading="lazy"
         />
       ) : (
-        <div className="flex h-24 w-40 items-center justify-center text-subtext sm:h-28 sm:w-48 md:h-32 md:w-56 lg:h-36 lg:w-64">
-          No preview
+        <div className="flex h-24 w-40 flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-subtext/20 bg-accent-purple/5 text-subtext transition-colors hover:border-accent-purple/30 sm:h-28 sm:w-48 md:h-32 md:w-56 lg:h-36 lg:w-64">
+          <div className="rounded-full bg-bg p-2 shadow-sm ring-1 ring-border">
+            <Clock className="size-4 text-accent-purple/70" />
+          </div>
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-subtext/70">
+            Coming Soon
+          </span>
         </div>
       )}
     </div>
@@ -69,9 +74,9 @@ function formatAuthors(authors?: string[] | string) {
   return (
     <>
       {list.map((name, i) => {
-        const isOjas = /Aawaiz\s+Soomro/i.test(name);
+        const isAawaiz = /Aawaiz/i.test(name);
         return (
-          <span key={`${name}-${i}`} className={isOjas ? "text-accent-red" : undefined}>
+          <span key={`${name}-${i}`} className={isAawaiz ? "text-accent-red" : undefined}>
             {name}
             {i < list.length - 1 ? ", " : ""}
           </span>
@@ -90,7 +95,7 @@ export default function Research() {
     <Section id="research" className="py-12 md:py-20">
       <Container>
         <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-          Research
+          FYP
         </h2>
 
         {empty ? (
@@ -100,7 +105,7 @@ export default function Research() {
             {items.map((p, idx) => (
               <article
                 key={`${p.title}-${idx}`}
-                className="group flex items-center gap-4 rounded-2xl border border-border bg-panel p-4 transition-all hover:border-accent-red md:gap-5 md:p-5 hover:shadow-sm hover:-translate-y-1"
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-panel p-4 transition-all duration-300 hover:border-accent-red md:gap-5 md:p-5 hover:-translate-y-1"
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -159,7 +164,7 @@ export default function Research() {
                           <Github className="size-4 transition-transform" />
                         </a>
                       )}
-                      
+
                       {p.status === "Under Review" && (
                         <span className="ml-auto inline-flex items-center gap-2 text-sm font-medium text-emerald-400 px-2">
                           <span className="relative inline-flex h-2.5 w-2.5">

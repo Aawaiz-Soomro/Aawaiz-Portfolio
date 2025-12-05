@@ -18,9 +18,11 @@
   --color-accent-yellow: #ffcc66;
   --color-accent-red: #f28779;
   --color-accent-purple: #d4bfff;
+  --color-accent-purple: #d4bfff;
   --color-accent-cyan: #95E6CB;
+  --color-accent-pink: #f06292;
 
-  --color-mouse-glow: rgba(89, 194, 255, 0.15);
+  --color-mouse-glow: rgba(89, 194, 255, 0.08);
 }
 
 /* Dark Theme - Ayu Mirage */
@@ -36,9 +38,11 @@
   --color-accent-yellow: #ffcc66;
   --color-accent-red: #f28779;
   --color-accent-purple: #d4bfff;
+  --color-accent-purple: #d4bfff;
   --color-accent-cyan: #95E6CB;
+  --color-accent-pink: #f06292;
 
-  --color-mouse-glow: rgba(89, 194, 255, 0.15);
+  --color-mouse-glow: rgba(89, 194, 255, 0.08);
 }
 
 /* Light Theme - Cloud */
@@ -55,6 +59,7 @@
   --color-accent-red: #d0372d;
   --color-accent-purple: #7d57c2;
   --color-accent-cyan: #00b7bd;
+  --color-accent-pink: #e91e63;
 
   --color-mouse-glow: rgb(255, 255, 255, 1);
 }

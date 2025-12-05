@@ -18,6 +18,7 @@ export default {
         "accent-red": "var(--color-accent-red)",
         "accent-purple": "var(--color-accent-purple)",
         "accent-cyan": "var(--color-accent-cyan)",
+        "accent-pink": "var(--color-accent-pink)",
         "accent-white": "var(--color-text)",
       },
       fontFamily: {

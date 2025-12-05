@@ -1,14 +1,15 @@
 import React, { useMemo, useState } from "react";
 import Container from "@/components/Container";
-import Brandmark from "@/components/Brandmark";
 import { useScrollSpy } from "@/components/useScrollSpy";
 import { Menu, X, Github, Linkedin, Instagram, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
+import logoFile from "@/assets/Aawaiz.S-Logo.png";
 
 // Color mapping for buttons - Dark theme (Ayu Mirage)
 const darkButtonColors = [
   { border: "#95e6cb", text: "#95e6cb" }, // cyan
   { border: "#d4bfff", text: "#d4bfff" }, // purple  
+  { border: "#F06292", text: "#F06292" }, // pink (Skills)
   { border: "#bae67e", text: "#bae67e" }, // green
   { border: "#ffcc66", text: "#ffcc66" }, // yellow
   { border: "#f28779", text: "#f28779" }, // orange
@@ -19,6 +20,7 @@ const darkButtonColors = [
 const lightButtonColors = [
   { border: "#00b7bd", text: "#00b7bd" }, // cyan/blue
   { border: "#7d57c2", text: "#7d57c2" }, // purple  
+  { border: "#E91E63", text: "#E91E63" }, // pink (Skills)
   { border: "#678f03", text: "#678f03" }, // green
   { border: "#cc6d00", text: "#cc6d00" }, // orange/yellow
   { border: "#d0372d", text: "#d0372d" }, // red
@@ -28,14 +30,23 @@ const lightButtonColors = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [showLogo, setShowLogo] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  
+
+  React.useEffect(() => {
+    const handleScroll = () => setShowLogo(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const buttonColors = theme === 'dark' ? darkButtonColors : lightButtonColors;
 
   const nav = useMemo(
     () => [
       { label: "About", href: "#about" },
       { label: "Projects", href: "#projects" },
+      { label: "Skills", href: "#skills" },
       { label: "Experience", href: "#experience" },
       { label: "Education", href: "#education" },
       { label: "FYP", href: "#research" },
@@ -65,22 +76,37 @@ export default function Navbar() {
           {/* Left: Name */}
           <a
             href="#top"
-            className="group text-subtext transition-colors hover:text-accent-cyan"
+            className={`group relative text-subtext transition-all duration-500 hover:text-accent-cyan ${showLogo ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
             aria-label="Aawaiz"
           >
-            <Brandmark className="h-6 w-6" />
+            <div className="relative h-12">
+              <img src={logoFile} alt="Aawaiz Logo" className="h-full w-auto opacity-0" />
+              <div
+                className="absolute inset-0 bg-current"
+                style={{
+                  maskImage: `url(${logoFile})`,
+                  WebkitMaskImage: `url(${logoFile})`,
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskPosition: 'left center',
+                  WebkitMaskPosition: 'left center',
+                }}
+              />
+            </div>
             <span className="sr-only">Aawaiz</span>
           </a>
 
           {/* Center: Nav */}
-          <nav 
+          <nav
             className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-4 md:flex"
             onMouseLeave={() => setHoveredItem(null)}
           >
             {navWithAccents.map((n) => {
               const isHighlighted = n.isHovered || n.isActive;
               const colors = buttonColors[n.colorIndex];
-              
+
               return (
                 <a
                   key={n.href}
@@ -154,14 +180,14 @@ export default function Navbar() {
 
         {/* Mobile nav */}
         {open && (
-          <div 
+          <div
             className="grid gap-2 pb-4 md:hidden"
             onMouseLeave={() => setHoveredItem(null)}
           >
             {navWithAccents.map((n) => {
               const isHighlighted = n.isHovered || n.isActive;
               const colors = buttonColors[n.colorIndex];
-              
+
               return (
                 <a
                   key={n.href}

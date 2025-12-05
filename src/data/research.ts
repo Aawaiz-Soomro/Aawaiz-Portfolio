@@ -26,8 +26,7 @@ export const RESEARCH: Research[] = [
     authors: ["Taha", "Aawaiz", "Humam"],
     status: "Under Review",
     // href: "https://example.com/project", 
-    thumb: "media/blip-auv/blippub_thumb.png",
-    previewVideo: "media/blip-auv/blippub_preview.mp4",
+    // href: "https://example.com/project",
   },
   // {
   //   title: "Contestant on The 1% Club",

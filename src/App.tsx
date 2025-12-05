@@ -8,6 +8,7 @@ import Experience from "@/sections/Experience";
 import Contact from "@/sections/Contact";
 import MouseGlow from "@/components/MouseGlow";
 import Education from "@/sections/Education";
+import Skills from "@/sections/Skills";
 import ScrollIndicator from "@/components/ScrollIndicator";
 import LoadingScreen from "@/components/LoadingScreen";
 import { useAssetPreloader } from "@/components/AssetPreloader";
@@ -26,7 +27,7 @@ export default function App() {
   // Show loading screen while assets are loading
   if (isLoading) {
     return (
-      <LoadingScreen 
+      <LoadingScreen
         progress={progress}
         loadedAssets={loadedAssets}
         totalAssets={totalAssets}
@@ -47,6 +48,7 @@ export default function App() {
         <About />
         <ScrollIndicator />
         <Projects />
+        <Skills />
         <Experience />
         <Education />
         <Research />

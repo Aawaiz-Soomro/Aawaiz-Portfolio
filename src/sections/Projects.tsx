@@ -8,18 +8,20 @@ import { Github, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
 const withBase = (path?: string) =>
   path ? `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}` : undefined
 
+
+
 function Preview({
   title,
   thumb,
   previewVideo,
   hovering,
-
+  objectFit = 'cover',
 }: {
   title: string
   thumb?: string
   previewVideo?: string
   hovering: boolean
-
+  objectFit?: 'contain' | 'cover'
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const [imageLoaded, setImageLoaded] = useState(false)
@@ -35,7 +37,7 @@ function Preview({
   }, [hovering])
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border bg-bg">
+    <div className="relative overflow-hidden rounded-xl border border-border bg-bg">
       {hovering && previewVideo ? (
         <video
           ref={videoRef}
@@ -54,7 +56,7 @@ function Preview({
             <div className="absolute inset-0 bg-panel animate-pulse h-44 md:h-48" />
           )}
           <img
-            className={`h-44 w-full object-cover md:h-48 transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'
+            className={`h-44 w-full md:h-48 transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${objectFit === 'contain' ? 'object-contain p-4 bg-white brightness-110 contrast-125' : 'object-cover'
               }`}
             src={withBase(thumb)}
             alt={title}
@@ -77,7 +79,6 @@ export default function Projects() {
     'All' | 'Personal' | 'University' | 'Commercial'
   >('All')
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null)
-  const [hoveredFilter, setHoveredFilter] = useState<string | null>(null)
   const [showAll, setShowAll] = useState(false)
 
   const filters = [
@@ -124,31 +125,24 @@ export default function Projects() {
   return (
     <Section id="projects" className="py-12 md:py-20">
       <Container>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Projects
           </h2>
 
           {/* Filter buttons */}
-          <div
-            className="flex flex-wrap items-center gap-3"
-            onMouseLeave={() => setHoveredFilter(null)}
-          >
+          <div className="flex flex-wrap items-center gap-2">
             {filters.map((filter) => {
-              const isActive = activeFilter === filter.value && !hoveredFilter
-              const isHovered = hoveredFilter === filter.value
-              const isHighlighted = isHovered || isActive
+              const isActive = activeFilter === filter.value
 
               return (
                 <button
                   key={filter.value}
                   onClick={() => setActiveFilter(filter.value)}
-                  onMouseEnter={() => setHoveredFilter(filter.value)}
-                  className="rounded-xl border px-3 py-1.5 text-sm transition-all duration-300 ease-out"
-                  style={{
-                    borderColor: isHighlighted ? 'var(--color-accent-purple)' : 'var(--color-border)',
-                    color: isHighlighted ? 'var(--color-accent-purple)' : 'var(--color-subtext)'
-                  }}
+                  className={`rounded-lg px-3 py-1.5 text-sm transition-all border ${isActive
+                    ? 'bg-accent-purple/10 text-accent-purple border-accent-purple'
+                    : 'border-transparent text-subtext hover:border-accent-purple hover:text-accent-purple'
+                    }`}
                 >
                   {filter.label}
                 </button>
@@ -157,110 +151,100 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {displayedItems.map((p, idx) => (
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {displayedItems.map((p) => (
             <Link
               key={p.slug}
               to={`/projects/${p.slug}`}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-panel transition-all hover:border-accent-purple hover:shadow-sm hover:-translate-y-1 cursor-pointer"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-panel transition-all duration-300 hover:border-accent-purple cursor-pointer p-5"
               onMouseEnter={() => setHoveredSlug(p.slug)}
               onMouseLeave={() => setHoveredSlug(null)}
             >
-              <div className="pt-4 px-4">
-                <Preview
-                  title={p.title}
-                  thumb={p.thumb}
-                  previewVideo={p.previewVideo}
-                  hovering={hoveredSlug === p.slug}
+              {/* Image */}
+              <Preview
+                title={p.title}
+                thumb={p.thumb}
+                previewVideo={p.previewVideo}
+                hovering={hoveredSlug === p.slug}
+                objectFit={p.objectFit}
+              />
 
-                />
-              </div>
-
-              <div className="flex flex-1 flex-col p-5">
+              {/* Content */}
+              <div className="flex flex-1 flex-col mt-4">
                 {/* Title */}
-                <h3 className="text-base font-medium text-accent-white transition-all">
+                <h3 className="text-lg font-medium text-text mb-3 group-hover:text-accent-purple transition-colors">
                   {p.title}
                 </h3>
 
-                <div className="flex-grow">
-                  {/* Blurb */}
-                  <p className="mt-2 text-sm leading-relaxed text-subtext">
-                    {p.blurb}
-                  </p>
+                {/* Description - 3 lines with increased line height */}
+                <p className="text-sm leading-7 text-subtext line-clamp-3 mb-5">
+                  {p.blurb}
+                </p>
 
-                  {/* Tags */}
-                  {p.tags?.length ? (
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {p.tags.map((t, i) => {
-                        const accents = [
-                          'border-accent-purple text-accent-purple',
-                          'border-accent-green text-accent-green',
-                          'border-accent-red text-accent-red',
-                          'border-accent-yellow text-accent-yellow',
-                          'border-accent-blue text-accent-blue',
-                          'border-accent-cyan text-accent-cyan',
-                        ]
-                        const style = accents[i % accents.length]
-                        return (
-                          <span
-                            key={t}
-                            className={`rounded-full border px-2.5 py-1 text-[11px] ${style} bg-bg`}
-                          >
-                            {t}
-                          </span>
-                        )
-                      })}
-                    </div>
-                  ) : null}
-                </div>
+                <div className="flex-grow" />
 
-                {/* Buttons/Active indicator - anchored to bottom */}
-                {(p.links?.link || p.links?.code || p.active || p.status === 'In Progress') && (
-                  <div className="mt-4 flex items-center gap-4 items-center">
-                    {p.links?.link && (
-                      <a
-                        href={p.links.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group inline-flex items-center gap-1 rounded-2xl border border-border px-4 py-2 text-sm font-medium text-text transition-colors text-accent-white hover:text-accent-purple hover:border-accent-purple cursor-pointer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Link{' '}
-                        <ExternalLink className="size-4 transition-transform" />
-                      </a>
-                    )}
-                    {p.links?.code && (
-                      <a
-                        href={p.links.code}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group inline-flex items-center gap-1 rounded-2xl border border-border px-4 py-2 text-sm font-medium text-text transition-colors text-accent-white hover:text-accent-purple hover:border-accent-purple cursor-pointer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Code{' '}
-                        <Github className="size-4 transition-transform" />
-                      </a>
-                    )}
-
-                    {(p.active || p.status === 'Active') && (
-                      <span className="ml-auto inline-flex items-center gap-2 text-sm font-medium text-emerald-400 px-2">
-                        <span className="relative inline-flex h-2.5 w-2.5">
-                          {/* bright core */}
-                          <span
-                            className="absolute inset-0 rounded-full bg-emerald-400 opacity-100 shadow-[0_0_12px_3px_rgba(16,185,129,0.9)]"
-                            aria-hidden
-                          />
-                          {/* soft halo with enhanced pulse */}
-                          <span
-                            className="absolute inset-0 rounded-full bg-emerald-400/80 blur-[4px] animate-[pulse_1.5s_ease-in-out_infinite]"
-                            aria-hidden
-                          />
+                {/* Tags - Original colorful style, dynamic single line with ellipsis */}
+                {/* Tags - Scrollable/Hidden, no ellipses logic */}
+                {p.tags?.length ? (
+                  <div className="flex flex-wrap w-full overflow-hidden h-7 gap-2 mb-4">
+                    {p.tags.map((t, i) => {
+                      const accents = [
+                        'border-accent-purple text-accent-purple',
+                        'border-accent-green text-accent-green',
+                        'border-accent-red text-accent-red',
+                        'border-accent-yellow text-accent-yellow',
+                        'border-accent-blue text-accent-blue',
+                        'border-accent-cyan text-accent-cyan',
+                      ]
+                      return (
+                        <span
+                          key={t}
+                          className={`whitespace-nowrap rounded-[4px] border px-3 py-1 text-[11px] font-medium ${accents[i % accents.length]} bg-bg`}
+                        >
+                          {t}
                         </span>
-                        Active
-                      </span>
-                    )}
+                      )
+                    })}
                   </div>
-                )}
+                ) : null}
+
+                {/* Footer - Links and Status */}
+                <div className="flex items-center gap-3 mt-auto">
+                  {p.links?.link && (
+                    <a
+                      href={p.links.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-subtext hover:text-accent-purple transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ExternalLink className="size-4" />
+                      <span>Demo</span>
+                    </a>
+                  )}
+                  {p.links?.code && (
+                    <a
+                      href={p.links.code}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-subtext hover:text-accent-purple transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github className="size-4" />
+                      <span>Code</span>
+                    </a>
+                  )}
+
+                  {(p.active || p.status === 'Active') && (
+                    <span className="ml-auto inline-flex items-center gap-1.5 text-xs text-emerald-400">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                      </span>
+                      Active
+                    </span>
+                  )}
+                </div>
               </div>
             </Link>
           ))}
@@ -271,18 +255,18 @@ export default function Projects() {
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => setShowAll(!showAll)}
-              className="group inline-flex items-center gap-2 rounded-2xl border border-border px-6 py-3 text-sm font-medium text-accent-white transition-all hover:border-accent-purple hover:text-accent-purple hover:shadow-sm"
+              className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-2.5 text-sm text-text transition-all hover:border-accent-purple hover:text-accent-purple"
             >
               {showAll ? 'Show Less' : 'See More'}
               {showAll ? (
-                <ChevronUp className="size-4 transition-transform duration-200" />
+                <ChevronUp className="size-4" />
               ) : (
-                <ChevronDown className="size-4 transition-transform duration-200" />
+                <ChevronDown className="size-4" />
               )}
             </button>
           </div>
         )}
       </Container>
-    </Section>
+    </Section >
   )
 }

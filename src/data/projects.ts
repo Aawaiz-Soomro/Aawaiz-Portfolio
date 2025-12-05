@@ -14,6 +14,7 @@ export type Project = {
   active?: boolean;
   body?: string;
   gallery?: string[];
+  objectFit?: 'contain' | 'cover';
 
 };
 
@@ -27,6 +28,7 @@ export const PROJECTS: Project[] = [
     area: "Personal",
     status: "Active",
     thumb: "/media/karachi-transit-guide/thumbnail.png",
+    objectFit: "contain",
 
 
     links: {
@@ -44,6 +46,8 @@ export const PROJECTS: Project[] = [
     tags: ["Node.js", "Gemini API", "AI/ML", "Predictive Analytics"],
     area: "Personal",
     status: "Active",
+    thumb: "/media/Crypto-Price-Predictor/crypto-og-logo.png",
+    objectFit: "contain",
     links: {
       code: "https://github.com/Aawaiz-Soomro/Crypto-Price-Predictor-AI"
     },
@@ -58,6 +62,8 @@ export const PROJECTS: Project[] = [
     tags: ["Python", "PyQT5 UI", "OpenCV", "MediaPipe", "YOLO", "Computer Vision"],
     area: "Personal",
     status: "Active",
+    thumb: "/media/Productivity-Master/Productivity-Master-Logo.png",
+    objectFit: "contain",
     links: {
       code: "https://github.com/Aawaiz-Soomro/Productivity-Master"
     },
@@ -74,6 +80,8 @@ export const PROJECTS: Project[] = [
     tags: ["Python", "AI/ML", "Chess", "python-chess", "Minimax", "Alpha-Beta Pruning"],
     area: "University",
     status: "Complete",
+    thumb: "/media/Four-Bishops-AI/Four-Bishops-Logo.png",
+    objectFit: "contain",
     links: {
       code: "https://github.com/Aawaiz-Soomro/FourBishops-AI"
     },
@@ -88,6 +96,8 @@ export const PROJECTS: Project[] = [
     tags: ["Python", "Flask", "SQLite", "Web App", "Backend Development", "Database Design"],
     area: "University",
     status: "Complete",
+    thumb: "/media/LibraDB/LibraDB-Logo.png",
+    objectFit: "contain",
     links: {
       code: "https://github.com/Aawaiz-Soomro/Libra-DB-Vercel",
       link: "https://libra-db-vercel.vercel.app/"
@@ -103,6 +113,8 @@ export const PROJECTS: Project[] = [
     tags: ["C++", "OOP", "System Design", "Data Structures", "File I/O"],
     area: "University",
     status: "Complete",
+    thumb: "/media/Task-Flow/Task-Flow-Logo.png",
+    objectFit: "contain",
     links: {
       code: "https://github.com/Aawaiz-Soomro/TaskFlow"
     },
@@ -117,6 +129,8 @@ export const PROJECTS: Project[] = [
     tags: ["C++", "SFML", "Game Dev", "Graphics Programming", "Event Handling"],
     area: "University",
     status: "Complete",
+    thumb: "/media/Modified-tetris/Modified-Tetris-Logo.png",
+    objectFit: "contain",
     links: {
       code: "#" // Placeholder
     },

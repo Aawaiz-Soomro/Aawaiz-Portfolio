@@ -5,15 +5,15 @@ import Container from "@/components/Container";
 import TypingEffect from "@/components/TypingEffect";
 import avatarFile from "@/assets/new-avatar.jpg";
 import { Mail, Phone, MapPin, Github, Linkedin, Download } from "lucide-react";
+import logoFile from "@/assets/Aawaiz.S-Logo.png";
 import { PROFILE } from "@/data/links";
 
 
 const STATUS_MESSAGES = [
-  "conference papers.",
-  "robots.",
-  "secret TV things.",
-  "learning ROS2.",
+  "life.",
+  "fyp.",
   "finals.",
+  "Everything AI.",
 ];
 
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`;
@@ -113,8 +113,23 @@ export default function About() {
       <Container>
         <div className="grid gap-10 py-16 md:grid-cols-5 md:items-center md:gap-12 md:py-5">
           <div className="md:col-span-3">
-            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-              {PROFILE.name}
+            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl mb-2 mt-1">
+              <div className="relative h-[1.5em] w-32 sm:w-40 lg:w-48">
+                <img src={logoFile} alt={PROFILE.name} className="h-full w-auto opacity-0" />
+                <div
+                  className="absolute inset-0 bg-current"
+                  style={{
+                    maskImage: `url(${logoFile})`,
+                    WebkitMaskImage: `url(${logoFile})`,
+                    maskSize: 'contain',
+                    WebkitMaskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    WebkitMaskRepeat: 'no-repeat',
+                    maskPosition: 'left center',
+                    WebkitMaskPosition: 'left center',
+                  }}
+                />
+              </div>
             </h1>
 
             {/* Typing line */}
@@ -141,35 +156,40 @@ export default function About() {
           </div>
 
           {/* Avatar panel */}
-          <div
-            className="group rounded-3xl border border-border bg-panel md:col-span-2 transition-all hover:border-accent-cyan hover:shadow-sm hover:-translate-y-1 max-w-xs mx-auto w-full"
-          >
-            <div className="p-6">
-              <div className="relative">
-                {!avatarLoaded && (
-                  <div className="w-full aspect-square rounded-2xl bg-panel animate-pulse" />
-                )}
-                <img
-                  src={avatarFile}
-                  alt="Headshot"
-                  className={`w-full rounded-2xl object-cover scale-105 transition-opacity duration-300 ${avatarLoaded ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  onLoad={() => setAvatarLoaded(true)}
-                  onError={() => setAvatarLoaded(true)}
-                />
+          <div className="group relative rotate-0 md:rotate-3 rounded-3xl border border-white/10 bg-white/5 p-4 transition-all duration-300 ease-out hover:rotate-0 hover:scale-105 hover:border-accent-cyan shadow-xl hover:shadow-2xl hover:shadow-accent-cyan/20 max-w-[320px] mx-auto w-full backdrop-blur-sm md:col-span-2">
+            <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
+              {!avatarLoaded && (
+                <div className="absolute inset-0 bg-panel animate-pulse" />
+              )}
+              <img
+                src={avatarFile}
+                alt="Headshot"
+                className={`h-full w-full object-cover transition-all duration-500 group-hover:scale-105 ${avatarLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
+                onLoad={() => setAvatarLoaded(true)}
+                onError={() => setAvatarLoaded(true)}
+              />
+
+              {/* Subtle overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+
+              {/* Status indicator icon */}
+              <div className="absolute bottom-4 right-4">
+                <span className="relative flex h-4 w-4">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-accent-cyan opacity-75 animate-ping"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-accent-cyan"></span>
+                </span>
               </div>
-              <div className="mt-4 text-sm text-subtext flex items-center gap-2">
-                <span className="font-medium whitespace-nowrap">Currently hacking on:</span>
-                <div className="relative flex-1 h-6">
-                  {/* Desktop/Tablet: standard (glitchy scramble is enabled via scrambleMs on md+) */}
-                  <span className="hidden md:block leading-6 font-semibold text-accent-cyan font-mono">
-                    {text}
-                  </span>
-                  {/* Mobile: gentle fade only (no scramble) */}
-                  <span className="md:hidden leading-6 font-semibold text-accent-cyan font-mono mobile-fade">
-                    {text}
-                  </span>
-                </div>
+            </div>
+
+            <div className="mt-5 text-center pb-2">
+              <p className="text-sm font-medium text-subtext uppercase tracking-widest mb-2">
+                Currently hacking on
+              </p>
+              <div className="h-8 flex items-center justify-center overflow-hidden">
+                <span className="font-mono text-xl font-bold text-accent-cyan">
+                  {text}
+                </span>
               </div>
             </div>
           </div>
